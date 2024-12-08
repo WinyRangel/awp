@@ -6,6 +6,11 @@ const urlsToCache = [
   "/js/crud.js",
   "/styles/style.css",
   "/images/logo.png",
+  "/images/habitacion.jpeg",   
+  "/images/habitacion2.jpeg",  
+  "/images/habitacion4.jpeg",  
+  "/images/habitacion5.jpeg",  
+  "/images/hab6.jpeg",     
 ];
 
 self.addEventListener("install", (event) => {
@@ -30,13 +35,37 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+// self.addEventListener("fetch", (event) => {
+//   event.respondWith(
+//     caches.match(event.request).then((response) => {
+//       return response || fetch(event.request);
+//     })
+//   );
+// });
+
 self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
+  //para imagenes
+  if (event.request.url.includes('/images/')) {
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return response || fetch(event.request).then((fetchResponse) => {
+          return caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, fetchResponse.clone());
+            return fetchResponse;
+          });
+        });
+      })
+    );
+  } else {
+    // Para cualquier otra solicitud
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return response || fetch(event.request);
+      })
+    );
+  }
 });
+
 
 // Sincronización de datos en segundo plano
 self.addEventListener("sync", (event) => {
