@@ -1,0 +1,22 @@
+{
+    "name": "CRUD Hotel",
+    "short_name": "HotelCRUD",
+    "description": "Aplicación CRUD para gestionar personas en un hotel.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3b5998",
+    "icons": [
+      {
+        "src": "/images/logo.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/images/logo.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" type="image/ico" href="images/icon_page.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CRUD dinámico con HTML, CSS y JS">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
+  <title>CRUD JS</title>
+</head>
+<body>
+  <header class="header" id="header">
+    <figure class="logo">
+      <img src="images/logo.png" height="60" alt="Logo de la página" />
+    </figure>
+    <nav class="menu">
+      <ol>
+        <li><a class="link" href="#header">Hotel Santa Julia</a></li>
+      </ol>
+    </nav>
+  </header>
+  <main class="container">
+    <table id="personas-lista" class="table">
+      <thead>
+        <tr> 
+          <th>Nombre</th> 
+          <th>Apellido</th>
+          <th>País</th>
+          <th>Registrado</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Fila de ejemplo -->
+        <tr>
+          <td>Juan</td>
+          <td>Pérez</td>
+          <td>México</td>
+          <td><button class="btn btn-edit">Editar</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <form id="personas-form">
+      <div class="form-group">
+        <label for="nom">Nombre</label> 
+        <input type="text" name="nom" id="nom" placeholder="Escriba aquí" required>
+      </div>
+      <div class="form-group">
+        <label for="ape">Apellido</label> 
+        <input type="text" name="ape" id="ape" placeholder="Escriba aquí" required>
+      </div>
+      <div class="form-group">
+        <label for="pais">País</label> 
+        <input type="text" name="pais" id="pais" placeholder="Escriba aquí" required>
+      </div>
+      <button class="btn btn-primary">Guardar</button>
+    </form>
+  </main>
+  <script src="js/bd.js"></script>
+  <script src="js/crud.js"></script>
+</body>
+</html>
