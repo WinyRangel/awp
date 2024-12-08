@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" type="image/ico" href="images/icon_page.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CRUD dinámico con HTML, CSS y JS">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
+  <title>Habitaciones</title>
+</head>
+<body>
+  <header class="header" id="header">
+    <figure class="logo">
+      <img src="images/logo.png" height="60" alt="Logo de la página" />
+    </figure>
+    <nav class="menu">
+      <ol>
+        <li><a class="link" href="#header">Hotel Santa Julia</a></li>
+      </ol>
+    </nav>
+  </header>
+  <main class="container">
+    <h1>Registro de Habitaciones</h1>
+
+    <!-- Formulario -->
+    <form id="habitacion-form">
+      <div class="form-group">
+        <label for="habitacion">Número de Habitación</label>
+        <input type="text" name="habitacion" id="habitacion" placeholder="Escriba aquí" required>
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo de habitación</label>
+        <input type="text" name="tipo" id="tipo" placeholder="Escriba aquí" required>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripcion</label>
+        <input type="text" name="descripcion" id="descripcion" placeholder="Escriba aquí" required>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <input type="text" name="estado" id="estado" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+
+    <!-- Tabla -->
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Número de Habitación</th>
+            <th>Tipo de habitación</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="habitaciones-lista">
+        </tbody>
+    </table>
+
+  </main>
+  <script src="js/session.js"></script>
+</body>
+</html>
