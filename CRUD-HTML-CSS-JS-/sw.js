@@ -10,7 +10,8 @@ const urlsToCache = [
   "/images/habitacion2.jpeg",  
   "/images/habitacion4.jpeg",  
   "/images/habitacion5.jpeg",  
-  "/images/hab6.jpeg",     
+  "/images/hab6.jpeg",   
+  "/js/empl.js",   
 ];
 
 self.addEventListener("install", (event) => {
@@ -94,6 +95,39 @@ self.addEventListener("sync", (event) => {
     );
   }
 });
+
+self.addEventListener("sync", evento => {
+  if(evento.tag == "sync-info-empleados"){
+      evento.waitUntil(
+          listarEmpleados(empleados => {
+              empleados.forEach(empleado => {
+                  if(empleado.enviado){
+                      return;
+                  }
+                  fetch("/agregarEmpleado", {
+                      method: "POST",
+                      body: JSON.stringify(empleado),
+                      headers: {
+                          "Content-Type": "application/json",
+                          Accept: "application/json"
+                      }
+                  })
+                  .then( respuesta => {
+                      empleado.enviado = true;
+                      editarEmpleado(empleado);
+                      const canal = new BroadcastChannel("sw-messages");
+                      canal.postMessage({title: "generarTabla"});
+                  })
+                  .catch(error => {
+                      console.log("Fallo al sincronizar:", error);
+                  })
+              })
+          })
+      )
+  }
+})
+
+
 
 // Notificaciones Push
 self.addEventListener("push", (event) => {
